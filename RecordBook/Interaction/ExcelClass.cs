@@ -1,9 +1,9 @@
-﻿using System.Data;
-using System.Runtime.InteropServices;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.Windows.Forms;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using System.Data;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace RecordBook.Interaction
 {
@@ -17,7 +17,7 @@ namespace RecordBook.Interaction
             Excel.Application application = new Excel.Application();
             Excel.Workbook workbook = application.Workbooks.Add();
             Excel.Worksheet worksheet = workbook.Sheets[1];
-            
+
             DataTable dataTable = new DataTable();
 
             dataTable = servicesUser.StudentDebtors(name_group);
@@ -36,7 +36,7 @@ namespace RecordBook.Interaction
                 number.Add(row["STUDENT_NUM_RECORD_BOOK"].ToString().Trim());
                 debtors.Add("Количество задолжностей: " + row["Количество задолжностей"].ToString().Trim());
             }
-                
+
             worksheet.Range["A1"].Value = $"Список должников группы {name_group} {DateTime.Now}";
             for (int i = 2; i < names.Count + 2; i++)
             {

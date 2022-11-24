@@ -1,23 +1,30 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using RecordBook.Interaction;
 using System;
 using System.Threading;
-using RecordBook.Interaction;
+using System.Windows.Forms;
 
 namespace RecordBook
 {
     public partial class FormRecordBook : MaterialForm
     {
+        private readonly InteractionDataUser interactionDataUser = new InteractionDataUser();
         private readonly ServicesUser servicesUser = new ServicesUser();
+
         private string stdName;
-        private int n;
+        private int numStu;
+        private int numDis;
+        private bool flagEdit = false;
 
         public FormRecordBook(string name, int x)
         {
-            stdName = name;
-            n = x;
+            Program.formRecordBook = this;
 
             InitializeComponent();
+
+            stdName = name;
+            numStu = x;
 
             new Thread(() =>
             {
@@ -33,21 +40,44 @@ namespace RecordBook
                 else
                     action();
             }).Start();
-
         }
 
-        private void FormRecordBook_Load(object sender, EventArgs e)
+        //Обработчик который выводит Ф.И.О. студента в поля при загрузке формы и количество сданных и не сданных дисцеплин
+        private void FormRecordBook_Load(object sender, EventArgs e) => servicesUser.StudentInfoView(numStu, stdName);
+
+        //Обработчик кнопки добавления строки в зачетку (вызов формы FromRecordBookAdd)
+        private void buttonRecordBookAdd_Click(object sender, EventArgs e)
         {
-            //Выводит ФИО студента в поля при загрузке формы и выводит все его экзамены
-            int[] credit = new int[2];
-            credit = servicesUser.StudentSelected(n);
+            FormRecordBookAddUpdate formRecordBookAdd = new FormRecordBookAddUpdate(stdName, numStu, "Add");
+            formRecordBookAdd.ShowDialog();
+        }
 
-            label2.Text = $"Ф.И.О. Студента: {stdName}";
-            label1.Text = $"Количество долгов: {credit[0]}";
-            label4.Text = $"Количество сданных предметов: {credit[1]}";
+        //Обработчик кнопки изменения выбранной строки в зачетки
+        private void buttonRecordBookEdit_Click(object sender, EventArgs e)
+        {
+            if (flagEdit != true)
+            {
+                MessageBox.Show("Выберете дисцеплину для изменения", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
-            dataGridView3.DataSource = servicesUser.Disciplines(n);
-            dataGridView3.ClearSelection();
+            FormRecordBookAddUpdate formRecordBookEdit = new FormRecordBookAddUpdate(stdName, numStu, numDis, "Update");
+            formRecordBookEdit.ShowDialog();
+            flagEdit = false;
+        }
+
+        //Обработчик кнопки удаления выбранной строки в зачетке
+        private void buttonRecordBookRemov_Click(object sender, EventArgs e)
+        {
+            if (flagEdit != true)
+            {
+                MessageBox.Show("Выберете дисцеплину для удаления", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            interactionDataUser.Remov(numStu, numDis);
+            servicesUser.StudentInfoView(numStu, stdName);
+            flagEdit = false;
         }
 
         //Обработчик вывоза формы для формироания зачетной книжки
@@ -56,10 +86,16 @@ namespace RecordBook
 
         }
 
-        private void buttonRecordBookAdd_Click(object sender, EventArgs e)
+        //Обработчик двойного нажатия на строку с предметами в заечтке для ее выбора для дальнейшей работы с ней
+        private void dataGridView3_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            FormRecordBookAdd formRecordBookEdit = new FormRecordBookAdd(stdName, n);
-            formRecordBookEdit.ShowDialog();
+            dataGridView3.Rows[dataGridView3.CurrentRow.Index].Selected = true;
+            numDis = Convert.ToInt32(dataGridView3[0, dataGridView3.CurrentRow.Index].Value);
+            flagEdit = true;
+            toolStripStatusLabel2.Text = $"Выбранна дсицеплина {dataGridView3[1, dataGridView3.CurrentRow.Index].Value}";
         }
+
+        //Обработчик выделеняи всей строки при нажатии на любую ячейку
+        private void dataGridView3_SelectionChanged(object sender, MouseEventArgs e) => dataGridView3.Rows[dataGridView3.CurrentRow.Index].Selected = true;
     }
 }

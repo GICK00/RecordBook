@@ -13,7 +13,7 @@ namespace RecordBook
         public static SqlConnection connection;
 
         public static readonly MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
-        private readonly InteractionData interactionData = new InteractionData();
+        private readonly InteractionDataAdmin interactionData = new InteractionDataAdmin();
         private readonly InteractionTool interactionTool = new InteractionTool();
         private readonly ServicesAdmin servicesAdmin = new ServicesAdmin();
         private readonly ServicesUser servicesUser = new ServicesUser();
@@ -26,15 +26,16 @@ namespace RecordBook
         private readonly FormDebtors formDebtors = new FormDebtors();
 
         public static bool SQLStat = false;
-        public static string ver = "Ver. Alpha 0.1.0 R_B";
+        public static string ver = "Ver. Alpha 0.2.0 R_B";
 
-        public static bool flagUpdate = false;
-        public static bool flagSelect = false;
+        public static bool flagUpdateAdmin = false;
+        public static bool flagSelectUser = false;
         public static int n = 0;
 
         public FormMain()
         {
             Program.formMain = this;
+
             InitializeComponent();
 
             new Thread(() =>
@@ -58,6 +59,7 @@ namespace RecordBook
 
             tools.UpdateApp();
             servicesAdmin.Visibl();
+
             dataGridView1.Enabled = false;
             dataGridView2.Enabled = false;
         }
@@ -115,7 +117,7 @@ namespace RecordBook
         {
             if (tools.Test() != true)
                 return;
-            FormDeletedAndSearch formDeletedAndSearch = new FormDeletedAndSearch("sea");
+            FormDeletedSearch formDeletedAndSearch = new FormDeletedSearch("sea");
             formDeletedAndSearch.ShowDialog();
         }
 
@@ -124,7 +126,7 @@ namespace RecordBook
         {
             if (tools.Test() != true)
                 return;
-            FormDeletedAndSearch formDeletedAndSearch = new FormDeletedAndSearch("del");
+            FormDeletedSearch formDeletedAndSearch = new FormDeletedSearch("del");
             formDeletedAndSearch.ShowDialog();
         }
 
@@ -188,7 +190,7 @@ namespace RecordBook
         {
             if (tools.CheckConfig() != true || tools.Test() != true)
                 return;
-            flagUpdate = false;
+            flagUpdateAdmin = false;
             n = 0;
             dataGridView1.ClearSelection();
             formRequest.ShowDialog();
@@ -199,7 +201,7 @@ namespace RecordBook
         {
             if (tools.CheckConfig() != true || tools.Test() != true)
                 return;
-            flagUpdate = false;
+            flagUpdateAdmin = false;
             n = 0;
             dataGridView1.ClearSelection();
             interactionTool.очиститьБазуДанныхToolStripMenuItem();
@@ -245,14 +247,14 @@ namespace RecordBook
                 comboBox.DataSource = null;
                 comboBoxFilter.DataSource = null;
                 dataGridView1.DataSource = null;
-                flagUpdate = false;
-                flagSelect = false;
+                flagUpdateAdmin = false;
                 dataGridView1.ClearSelection();
                 dataGridView1.Enabled = false;
 
                 comboBox2.DataSource = null;
                 comboBox3.DataSource = null;
                 dataGridView2.DataSource = null;
+                flagSelectUser = false;
                 dataGridView2.ClearSelection();
                 dataGridView2.Enabled = false;
 
@@ -278,7 +280,7 @@ namespace RecordBook
         {
             servicesAdmin.TextViewTextBox(servicesAdmin.ArrayUpdate());
             dataGridView1.Rows[dataGridView1.CurrentRow.Index].Selected = true;
-            flagUpdate = true;
+            flagUpdateAdmin = true;
 
             toolStripStatusLabel2.Text = $"Выбрана строка № {(dataGridView1.CurrentRow.Index + 1)}";
         }
@@ -297,8 +299,12 @@ namespace RecordBook
         //Обработчик вызова формы в которой находятся все сведения об студенте по предметам
         private void buttonRecordBook_Click(object sender, EventArgs e)
         {
-            if (tools.Test() != true || tools.LoginGuest() != true || flagSelect != true)
+            if (tools.Test() != true || tools.LoginGuest() != true || flagSelectUser != true)
+            {
+                MessageBox.Show("Выберете студента!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
+            }
+
             string stdName = $" {dataGridView2[1, dataGridView2.CurrentRow.Index].Value.ToString().Trim()} {dataGridView2[2, dataGridView2.CurrentRow.Index].Value.ToString().Trim()} {dataGridView2[3, dataGridView2.CurrentRow.Index].Value.ToString().Trim()}";
             FormRecordBook formRecordBook = new FormRecordBook(stdName, Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentRow.Index].Value));
             formRecordBook.ShowDialog();
@@ -348,7 +354,7 @@ namespace RecordBook
             label4.Text = $"Количество сданных предметов: {credit[1]}";
 
             dataGridView2.Rows[dataGridView2.CurrentRow.Index].Selected = true;
-            flagSelect = true;
+            flagSelectUser = true;
 
             toolStripStatusLabel2.Text = $"Выбран студент {stdName}";
         }

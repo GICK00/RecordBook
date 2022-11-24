@@ -1,9 +1,9 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using RecordBook.Interaction;
 using System;
 using System.Threading;
 using System.Windows.Forms;
-using RecordBook.Interaction;
 
 namespace RecordBook
 {

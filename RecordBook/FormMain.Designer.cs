@@ -51,7 +51,6 @@ namespace RecordBook
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -70,6 +69,7 @@ namespace RecordBook
             this.label27 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel8 = new System.Windows.Forms.ToolStripLabel();
@@ -106,11 +106,11 @@ namespace RecordBook
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.toolStrip3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.panelBackround.SuspendLayout();
@@ -338,31 +338,7 @@ namespace RecordBook
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1202, 624);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Сотрудник";
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.dataGridView2.Location = new System.Drawing.Point(397, 34);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridView2.MultiSelect = false;
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowHeadersWidth = 20;
-            this.dataGridView2.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.Size = new System.Drawing.Size(800, 582);
-            this.dataGridView2.TabIndex = 0;
-            this.dataGridView2.TabStop = false;
-            this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_SelectionChanged);
-            this.dataGridView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseDoubleClick);
+            this.tabPage2.Text = "Работа";
             // 
             // toolStrip3
             // 
@@ -430,7 +406,7 @@ namespace RecordBook
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Location = new System.Drawing.Point(7, 34);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(384, 185);
+            this.panel2.Size = new System.Drawing.Size(384, 186);
             this.panel2.TabIndex = 56;
             // 
             // panel5
@@ -441,7 +417,7 @@ namespace RecordBook
             this.panel5.Controls.Add(this.label1);
             this.panel5.Controls.Add(this.label4);
             this.panel5.Controls.Add(this.label2);
-            this.panel5.Location = new System.Drawing.Point(2, 95);
+            this.panel5.Location = new System.Drawing.Point(2, 96);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(380, 88);
             this.panel5.TabIndex = 57;
@@ -579,6 +555,30 @@ namespace RecordBook
             this.comboBox3.Size = new System.Drawing.Size(186, 23);
             this.comboBox3.TabIndex = 3;
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dataGridView2.Location = new System.Drawing.Point(397, 34);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridView2.MultiSelect = false;
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.RowHeadersWidth = 20;
+            this.dataGridView2.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.Size = new System.Drawing.Size(800, 582);
+            this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.TabStop = false;
+            this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_SelectionChanged);
+            this.dataGridView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseDoubleClick);
+            // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
@@ -691,14 +691,14 @@ namespace RecordBook
             this.panelBackround.Location = new System.Drawing.Point(7, 34);
             this.panelBackround.Margin = new System.Windows.Forms.Padding(0);
             this.panelBackround.Name = "panelBackround";
-            this.panelBackround.Size = new System.Drawing.Size(422, 514);
+            this.panelBackround.Size = new System.Drawing.Size(422, 517);
             this.panelBackround.TabIndex = 49;
             this.panelBackround.Visible = false;
             // 
             // panelDefault
             // 
             this.panelDefault.BackColor = System.Drawing.Color.White;
-            this.panelDefault.Location = new System.Drawing.Point(2, 53);
+            this.panelDefault.Location = new System.Drawing.Point(2, 54);
             this.panelDefault.Name = "panelDefault";
             this.panelDefault.Size = new System.Drawing.Size(418, 263);
             this.panelDefault.TabIndex = 63;
@@ -771,7 +771,7 @@ namespace RecordBook
             this.panel3.Controls.Add(this.comboBoxFilter);
             this.panel3.Controls.Add(this.buttonFilter);
             this.panel3.Controls.Add(this.label30);
-            this.panel3.Location = new System.Drawing.Point(2, 317);
+            this.panel3.Location = new System.Drawing.Point(2, 319);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(418, 109);
             this.panel3.TabIndex = 61;
@@ -871,7 +871,7 @@ namespace RecordBook
             this.panel1.Controls.Add(this.buttonDelete);
             this.panel1.Controls.Add(this.buttonSearch);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(2, 427);
+            this.panel1.Location = new System.Drawing.Point(2, 430);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(418, 85);
             this.panel1.TabIndex = 55;
@@ -1033,7 +1033,6 @@ namespace RecordBook
             this.statusStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -1041,6 +1040,7 @@ namespace RecordBook
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();

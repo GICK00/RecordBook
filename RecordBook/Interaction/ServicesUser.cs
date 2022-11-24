@@ -10,9 +10,6 @@ namespace RecordBook.Interaction
 {
     internal class ServicesUser
     {
-        //Написать нывый sql запрос на вывод информации о студенте без
-        //оценок и т.п. для ознакомления последних добавленных студентов.
-
         //Метод обновления информации в таблицах
         public void Reload()
         {
@@ -59,7 +56,7 @@ namespace RecordBook.Interaction
             }
         }
 
-        //Метод которой на основе выбранной сециальности в comboBox2 выгружает соответсвующие группы в cxomboBox
+        //Метод которой на основе выбранной сециальности в comboBox выгружает соответсвующие группы в comboBox
         public void DataTableUserGroupName(ComboBox comboBox, ComboBox comboBox1)
         {
             Regex regex = new Regex(@"\d\d.\d\d.\d\d\s[|]\s");
@@ -83,31 +80,7 @@ namespace RecordBook.Interaction
             }
         }
 
-        //Метод который выгружает список дисциплин в comboBox
-        public void DataTableUserDiscipline(ComboBox comboBox, string type)
-        {
-            if (FormMain.SQLStat != true)
-                return;
-
-            string sql1 = $"SELECT DISCIPLINE_{type} FROM Discipline";
-            using (SqlCommand sqlCommand = new SqlCommand(sql1, FormMain.connection))
-            {
-                FormMain.connection.Open();
-                using (SqlDataReader dataReader = sqlCommand.ExecuteReader())
-                {
-                    DataTable dataTable = new DataTable();
-                    dataTable.Load(dataReader);
-                    List<string> names = new List<string>();
-                    foreach (DataRow row in dataTable.Rows)
-                        names.Add(row[$"DISCIPLINE_{type}"].ToString().Trim());
-                    comboBox.DataSource = names.Distinct().ToList();
-                    dataReader.Close();
-                }
-                FormMain.connection.Close();
-            }
-        }
-
-        //Метод поиска студетов в БД 
+        //Метод поиска студетов в БД выбранной специальностью и группой в comboBox
         public void StudentSearch()
         {
             Regex regex = new Regex(@"\d\d.\d\d.\d\d\s[|]\s");
@@ -129,7 +102,7 @@ namespace RecordBook.Interaction
             }
         }
 
-        //Функиця вывода информации о студенте в поля при двойном нажатии на запись в таблице
+        //Функиця вывода информации о студенте (Ф.И.О. количество сданных предметов, долгов) в поля при двойном нажатии на запись в таблице
         public int[] StudentSelected(int n)
         {
             int[] credit = new int[2];
@@ -187,11 +160,25 @@ namespace RecordBook.Interaction
             formLoad.ShowDialog();
         }
 
+        //Выводит информацию о студенте на форме зачетной книжки (FormRecordBook)
+        public void StudentInfoView(int numStu, string stdName)
+        {
+            int[] credit = new int[2];
+            credit = StudentSelected(numStu);
+
+            Program.formRecordBook.label2.Text = $"Ф.И.О. Студента: {stdName}";
+            Program.formRecordBook.label1.Text = $"Количество долгов: {credit[0]}";
+            Program.formRecordBook.label4.Text = $"Количество сданных предметов: {credit[1]}";
+
+            Program.formRecordBook.dataGridView3.DataSource = Disciplines(numStu);
+            Program.formRecordBook.dataGridView3.ClearSelection();
+        }
+
         //Функиця вывода всех дисцеплин которые соответсвуют указанному номеру студента в БД
         public DataTable Disciplines(int n)
         {
             DataTable dataTable;
-            string sql = "SELECT DISCIPLINE_NAME, DISCIPLINE_SEMESTER, DISCIPLINE_TEACHER, CHANGE_GRADE"
+            string sql = "SELECT Discipline.DISCIPLINE_ID, DISCIPLINE_NAME, DISCIPLINE_SEMESTER, DISCIPLINE_TEACHER, CHANGE_GRADE, CREDIT_DATE"
                 + " FROM Discipline, Student, Credit, Change"
                 + " WHERE Student.STUDENT_ID = Change.STUDENT_ID AND Change.CREDIT_ID = Credit.CREDIT_ID AND Credit.DISCIPLINE_ID = Discipline.DISCIPLINE_ID"
                 + $" AND Student.STUDENT_ID = {n}";
@@ -207,6 +194,64 @@ namespace RecordBook.Interaction
                 FormMain.connection.Close();
             }
             return dataTable;
+        }
+
+        //Функция которая возвращает true если в таблице с дисцеплина есть похожая запись (для не повторения их в таблице БД)
+        public bool Discipline(string Name, string Teacher, int Semestr)
+        {
+            bool flag = true;
+            string sql = $"SELECT * FROM Discipline WHERE '{Name.Trim()}' = DISCIPLINE_NAME AND '{Teacher.Trim()}' = DISCIPLINE_TEACHER AND {Semestr} = DISCIPLINE_SEMESTER";
+            using (SqlCommand sqlCommand = new SqlCommand(sql, FormMain.connection))
+            {
+                FormMain.connection.Open();
+                using (SqlDataReader dataReader = sqlCommand.ExecuteReader())
+                {
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(dataReader);
+                    dataReader.Close();
+                    if (dataTable.Rows.Count == 0)
+                        flag = false;
+                }
+                FormMain.connection.Close();
+            }
+            return flag;
+        }
+
+        //Метод вывода данные в textBox на форме FormRecordBookAdd при открытии формы для изменения
+        public void UnloadingTextBox(int numStu, int numDis)
+        {
+            string sql = "SELECT DISCIPLINE_NAME, DISCIPLINE_SEMESTER, DISCIPLINE_TEACHER, CHANGE_GRADE, CREDIT_DATE"
+                + " FROM Discipline, Student, Credit, Change"
+                + " WHERE Student.STUDENT_ID = Change.STUDENT_ID AND Change.CREDIT_ID = Credit.CREDIT_ID AND Credit.DISCIPLINE_ID = Discipline.DISCIPLINE_ID"
+                + $" AND Student.STUDENT_ID = {numStu} AND Discipline.DISCIPLINE_ID = {numDis}";
+            using (SqlCommand sqlCommand = new SqlCommand(sql, FormMain.connection))
+            {
+                FormMain.connection.Open();
+                using (SqlDataReader dataReader = sqlCommand.ExecuteReader())
+                {
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(dataReader);
+
+                    List<string> names = new List<string>();
+                    foreach (DataRow row in dataTable.Rows)
+                        names.Add(row["DISCIPLINE_NAME"].ToString() + "|"
+                            + row["DISCIPLINE_SEMESTER"].ToString() + "|"
+                            + row["DISCIPLINE_TEACHER"].ToString() + "|"
+                            + row["CHANGE_GRADE"].ToString() + "|"
+                            + row["CREDIT_DATE"].ToString());
+                    dataReader.Close();
+
+                    string[] dataMas = new string[5];
+                    dataMas = names[0].Split('|');
+
+                    Program.formRecordBookAdd.textBox1.Text = dataMas[0].Trim();
+                    Program.formRecordBookAdd.textBox18.Text = dataMas[1].Trim();
+                    Program.formRecordBookAdd.textBox2.Text = dataMas[2].Trim();
+                    Program.formRecordBookAdd.comboBox2.Text = dataMas[3].Trim();
+                    Program.formRecordBookAdd.textBox3.Text = dataMas[4].Trim();
+                }
+                FormMain.connection.Close();
+            }
         }
     }
 }

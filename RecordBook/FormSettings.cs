@@ -1,12 +1,12 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using RecordBook.Interaction;
 using System;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using RecordBook.Interaction;
 
 namespace RecordBook
 {
@@ -41,7 +41,7 @@ namespace RecordBook
 
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(Tools.connSrring);
 
-            //Выгрузка даннх из файла в textBox на форме настроек
+            //Выгрузка даннх из файла конфигурации в textBox на форме настроек
             textBox1.Text = builder["Server"].ToString();
             textBox4.Text = builder["Initial Catalog"].ToString();
             comboBox.Text = builder["Integrated Security"].ToString();

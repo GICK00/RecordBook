@@ -170,9 +170,9 @@
             this.panel5.Controls.Add(this.label21);
             this.panel5.Controls.Add(this.buttonSearchStud);
             this.panel5.Controls.Add(this.label27);
-            this.panel5.Location = new System.Drawing.Point(2, 3);
+            this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(866, 88);
+            this.panel5.Size = new System.Drawing.Size(865, 88);
             this.panel5.TabIndex = 57;
             // 
             // panel2
@@ -181,7 +181,7 @@
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Location = new System.Drawing.Point(5, 67);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(870, 94);
+            this.panel2.Size = new System.Drawing.Size(871, 94);
             this.panel2.TabIndex = 65;
             // 
             // FormDebtors

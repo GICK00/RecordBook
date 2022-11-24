@@ -38,10 +38,8 @@ namespace RecordBook
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonOk
@@ -69,11 +67,11 @@ namespace RecordBook
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSQLReader.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSQLReader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSQLReader.Location = new System.Drawing.Point(3, 3);
+            this.textBoxSQLReader.Location = new System.Drawing.Point(7, 88);
             this.textBoxSQLReader.Multiline = true;
             this.textBoxSQLReader.Name = "textBoxSQLReader";
             this.textBoxSQLReader.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxSQLReader.Size = new System.Drawing.Size(820, 343);
+            this.textBoxSQLReader.Size = new System.Drawing.Size(823, 343);
             this.textBoxSQLReader.TabIndex = 1;
             // 
             // buttonExit
@@ -152,25 +150,13 @@ namespace RecordBook
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 17);
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Controls.Add(this.textBoxSQLReader);
-            this.panel1.Location = new System.Drawing.Point(5, 83);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(827, 349);
-            this.panel1.TabIndex = 5;
-            // 
             // FormRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(837, 488);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.textBoxSQLReader);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonOk);
@@ -186,9 +172,8 @@ namespace RecordBook
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -202,6 +187,5 @@ namespace RecordBook
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.Panel panel1;
     }
 }

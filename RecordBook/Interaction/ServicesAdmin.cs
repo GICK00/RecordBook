@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
-using System.Net;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace RecordBook.Interaction
@@ -104,7 +101,7 @@ namespace RecordBook.Interaction
                 }
                 FormMain.connection.Close();
             }
-            FormMain.flagUpdate = false;
+            FormMain.flagUpdateAdmin = false;
             FormMain.n = 0;
             Program.formMain.dataGridView1.ClearSelection();
         }

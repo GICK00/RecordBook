@@ -6,6 +6,8 @@ namespace RecordBook
     static class Program
     {
         public static FormMain formMain;
+        public static FormRecordBook formRecordBook;
+        public static FormRecordBookAddUpdate formRecordBookAdd;
         [STAThread]
         static void Main()
         {

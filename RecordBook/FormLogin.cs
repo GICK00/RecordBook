@@ -50,8 +50,8 @@ namespace RecordBook
                 {
                     Login = null;
                     string sql = $"SELECT POSITION FROM [Autorization] WHERE LOGIN = '{textBox1.Text}' AND PASSWORD = '{textBox2.Text}'";
-                    Autorization(sql);
-                    if (Login != null)
+
+                    if (Login != Autorization(sql))
                     {
                         if (Login == "admin")
                         {
@@ -89,7 +89,7 @@ namespace RecordBook
         }
 
         //Метод проверающий привелегии введенного пользователя
-        private void Autorization(string sql)
+        private string Autorization(string sql)
         {
             try
             {
@@ -103,10 +103,11 @@ namespace RecordBook
                         reader.Close();
                     }
                 }
+                return Login;
             }
             catch
             {
-                Login = null;
+                return Login = null;
             }
             finally
             {

@@ -36,16 +36,21 @@
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.экспортироватьЗачетнуюКнижкуВExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.buttonRecordBookAdd = new System.Windows.Forms.Button();
-            this.экспортироватьЗачетнуюКнижкуВExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonRecordBookRemov = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.buttonRecordBookEdit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView3
@@ -66,9 +71,11 @@
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.RowHeadersWidth = 20;
             this.dataGridView3.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.Size = new System.Drawing.Size(882, 308);
+            this.dataGridView3.Size = new System.Drawing.Size(882, 422);
             this.dataGridView3.TabIndex = 1;
             this.dataGridView3.TabStop = false;
+            this.dataGridView3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView3_SelectionChanged);
+            this.dataGridView3.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView3_MouseDoubleClick);
             // 
             // label1
             // 
@@ -122,6 +129,12 @@
             this.справкаToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
             this.справкаToolStripMenuItem.Text = "Справка о пересдачи";
             this.справкаToolStripMenuItem.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
+            // 
+            // экспортироватьЗачетнуюКнижкуВExcelToolStripMenuItem
+            // 
+            this.экспортироватьЗачетнуюКнижкуВExcelToolStripMenuItem.Name = "экспортироватьЗачетнуюКнижкуВExcelToolStripMenuItem";
+            this.экспортироватьЗачетнуюКнижкуВExcelToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
+            this.экспортироватьЗачетнуюКнижкуВExcelToolStripMenuItem.Text = "Экспортировать зачетную книжку в Excel";
             // 
             // toolStripSeparator3
             // 
@@ -190,35 +203,83 @@
             this.buttonRecordBookAdd.UseVisualStyleBackColor = false;
             this.buttonRecordBookAdd.Click += new System.EventHandler(this.buttonRecordBookAdd_Click);
             // 
-            // экспортироватьЗачетнуюКнижкуВExcelToolStripMenuItem
+            // buttonRecordBookRemov
             // 
-            this.экспортироватьЗачетнуюКнижкуВExcelToolStripMenuItem.Name = "экспортироватьЗачетнуюКнижкуВExcelToolStripMenuItem";
-            this.экспортироватьЗачетнуюКнижкуВExcelToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
-            this.экспортироватьЗачетнуюКнижкуВExcelToolStripMenuItem.Text = "Экспортировать зачетную книжку в Excel";
+            this.buttonRecordBookRemov.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonRecordBookRemov.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonRecordBookRemov.FlatAppearance.BorderSize = 0;
+            this.buttonRecordBookRemov.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonRecordBookRemov.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
+            this.buttonRecordBookRemov.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRecordBookRemov.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonRecordBookRemov.Location = new System.Drawing.Point(214, 145);
+            this.buttonRecordBookRemov.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonRecordBookRemov.Name = "buttonRecordBookRemov";
+            this.buttonRecordBookRemov.Size = new System.Drawing.Size(95, 23);
+            this.buttonRecordBookRemov.TabIndex = 64;
+            this.buttonRecordBookRemov.Text = "Удалить";
+            this.buttonRecordBookRemov.UseVisualStyleBackColor = false;
+            this.buttonRecordBookRemov.Click += new System.EventHandler(this.buttonRecordBookRemov_Click);
             // 
-            // button1
+            // statusStrip1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(110, 145);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 23);
-            this.button1.TabIndex = 64;
-            this.button1.Text = "Удалить";
-            this.button1.UseVisualStyleBackColor = false;
+            this.statusStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.statusStrip1.AutoSize = false;
+            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.statusStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.statusStrip1.GripMargin = new System.Windows.Forms.Padding(0);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 602);
+            this.statusStrip1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(897, 24);
+            this.statusStrip1.SizingGrip = false;
+            this.statusStrip1.TabIndex = 65;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(50, 19);
+            this.toolStripStatusLabel1.Text = "Статус:";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 19);
+            // 
+            // buttonRecordBookEdit
+            // 
+            this.buttonRecordBookEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonRecordBookEdit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonRecordBookEdit.FlatAppearance.BorderSize = 0;
+            this.buttonRecordBookEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonRecordBookEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
+            this.buttonRecordBookEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRecordBookEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonRecordBookEdit.Location = new System.Drawing.Point(110, 145);
+            this.buttonRecordBookEdit.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonRecordBookEdit.Name = "buttonRecordBookEdit";
+            this.buttonRecordBookEdit.Size = new System.Drawing.Size(95, 23);
+            this.buttonRecordBookEdit.TabIndex = 66;
+            this.buttonRecordBookEdit.Text = "Изменить";
+            this.buttonRecordBookEdit.UseVisualStyleBackColor = false;
+            this.buttonRecordBookEdit.Click += new System.EventHandler(this.buttonRecordBookEdit_Click);
             // 
             // FormRecordBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(894, 489);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(894, 627);
+            this.Controls.Add(this.buttonRecordBookEdit);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.buttonRecordBookRemov);
             this.Controls.Add(this.buttonRecordBookAdd);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label1);
@@ -234,6 +295,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,6 +318,10 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.Button buttonRecordBookAdd;
         private System.Windows.Forms.ToolStripMenuItem экспортироватьЗачетнуюКнижкуВExcelToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonRecordBookRemov;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.Button buttonRecordBookEdit;
     }
 }

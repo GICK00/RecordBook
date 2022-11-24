@@ -51,7 +51,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Icon 128x128.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>3BD96DC0834FED5F1CB31D6CC18BEE9D167283BB</ManifestCertificateThumbprint>
@@ -126,11 +127,11 @@
     <Compile Include="FormDebtors.Designer.cs">
       <DependentUpon>FormDebtors.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDeletedAndSearch.cs">
+    <Compile Include="FormDeletedSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDeletedAndSearch.Designer.cs">
-      <DependentUpon>FormDeletedAndSearch.cs</DependentUpon>
+    <Compile Include="FormDeletedSearch.Designer.cs">
+      <DependentUpon>FormDeletedSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="FormInfo.cs">
       <SubType>Form</SubType>
@@ -162,11 +163,11 @@
     <Compile Include="FormRecordBook.Designer.cs">
       <DependentUpon>FormRecordBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRecordBookAdd.cs">
+    <Compile Include="FormRecordBookAddUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRecordBookAdd.Designer.cs">
-      <DependentUpon>FormRecordBookAdd.cs</DependentUpon>
+    <Compile Include="FormRecordBookAddUpdate.Designer.cs">
+      <DependentUpon>FormRecordBookAddUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="FormRequest.cs">
       <SubType>Form</SubType>
@@ -181,7 +182,8 @@
       <DependentUpon>FormSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Interaction\ExcelClass.cs" />
-    <Compile Include="Interaction\InteractionData.cs" />
+    <Compile Include="Interaction\InteractionDataAdmin.cs" />
+    <Compile Include="Interaction\InteractionDataUser.cs" />
     <Compile Include="Interaction\InteractionTool.cs" />
     <Compile Include="Interaction\ServicesAdmin.cs" />
     <Compile Include="Interaction\ServicesUser.cs" />
@@ -190,8 +192,8 @@
     <EmbeddedResource Include="FormDebtors.resx">
       <DependentUpon>FormDebtors.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDeletedAndSearch.resx">
-      <DependentUpon>FormDeletedAndSearch.cs</DependentUpon>
+    <EmbeddedResource Include="FormDeletedSearch.resx">
+      <DependentUpon>FormDeletedSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInfo.resx">
       <DependentUpon>FormInfo.cs</DependentUpon>
@@ -209,8 +211,8 @@
     <EmbeddedResource Include="FormRecordBook.resx">
       <DependentUpon>FormRecordBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRecordBookAdd.resx">
-      <DependentUpon>FormRecordBookAdd.cs</DependentUpon>
+    <EmbeddedResource Include="FormRecordBookAddUpdate.resx">
+      <DependentUpon>FormRecordBookAddUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRequest.resx">
       <DependentUpon>FormRequest.cs</DependentUpon>
@@ -239,8 +241,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\Roboto-Bold.ttf" />
-    <None Include="Resources\Roboto-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -260,10 +260,12 @@
   <ItemGroup>
     <None Include="Resources\Kit.gif" />
     <None Include="Resources\Flopa.gif" />
-    <None Include="Resources\Icon 128x128.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DJ.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon-128x128.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

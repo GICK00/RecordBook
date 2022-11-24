@@ -45,7 +45,7 @@ namespace RecordBook
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.linkLabel1.Location = new System.Drawing.Point(252, 197);
+            this.linkLabel1.Location = new System.Drawing.Point(264, 178);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(114, 16);
             this.linkLabel1.TabIndex = 1;
@@ -58,7 +58,7 @@ namespace RecordBook
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.linkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.linkLabel2.Location = new System.Drawing.Point(412, 197);
+            this.linkLabel2.Location = new System.Drawing.Point(423, 177);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(159, 16);
             this.linkLabel2.TabIndex = 2;
@@ -71,7 +71,7 @@ namespace RecordBook
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.linkLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.linkLabel3.Location = new System.Drawing.Point(144, 230);
+            this.linkLabel3.Location = new System.Drawing.Point(162, 210);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(240, 16);
             this.linkLabel3.TabIndex = 3;
@@ -91,10 +91,10 @@ namespace RecordBook
             this.richTextBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox1.Location = new System.Drawing.Point(6, 69);
+            this.richTextBox1.Location = new System.Drawing.Point(21, 66);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(604, 207);
+            this.richTextBox1.Size = new System.Drawing.Size(579, 232);
             this.richTextBox1.TabIndex = 5;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
@@ -102,7 +102,7 @@ namespace RecordBook
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(4, 265);
+            this.pictureBox1.Location = new System.Drawing.Point(5, 303);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(606, 137);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -114,7 +114,7 @@ namespace RecordBook
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(615, 405);
+            this.ClientSize = new System.Drawing.Size(615, 445);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkLabel2);
@@ -122,9 +122,9 @@ namespace RecordBook
             this.Controls.Add(this.richTextBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(615, 405);
+            this.MaximumSize = new System.Drawing.Size(615, 445);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(615, 405);
+            this.MinimumSize = new System.Drawing.Size(615, 445);
             this.Name = "FormInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "О приложении";

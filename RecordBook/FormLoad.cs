@@ -1,9 +1,9 @@
-﻿using System;
+﻿using RecordBook.Interaction;
+using System;
 using System.Data.SqlClient;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RecordBook.Interaction;
 
 namespace RecordBook
 {
@@ -128,7 +128,7 @@ namespace RecordBook
                 });
                 progressBar.Value += 50;
                 await Task.Delay(500);
-            } 
+            }
             else if (typeLoad == "excel")
             {
                 await Task.Run(() =>
